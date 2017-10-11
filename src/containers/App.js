@@ -7,6 +7,7 @@ class App extends Component {
     super(props);
     this.state = {
       toggleSet: true,
+      powerOn: false,
       soundSet: {
         heaterKit: [
           {
@@ -128,8 +129,8 @@ class App extends Component {
     return (
       <div className="app">
         <h1 className="App-title">Welcome to React</h1>
-        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} />
-        <Controls toggled={this.state.toggleSet} />
+        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn}/>
+        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn}/>
       </div>
     );
   }

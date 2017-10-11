@@ -1,10 +1,9 @@
 import React from 'react';
 import SoundButton from '../components/SoundButton';
 
-const SoundButtonsContainer = () => {
-  const tempArr = [1,2,3,4,5,6,7,8,9];
-  const soundButtons = tempArr.map(a=>{
-    return <SoundButton soundName={a}/>
+const SoundButtonsContainer = (props) => {
+  const soundButtons = props.sounds.map(a=>{
+    return <SoundButton soundName={a.keyChar} key={a.keyCode}/>
   });
   return (
     <ul className="sound-buttons-container">

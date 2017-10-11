@@ -1,5 +1,25 @@
 body {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+.sound-button {
+  background-color: #B3B3B3;
+  border: 3px solid black;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  padding: 80px 50px 80px 50px;
+  font-size: 200%;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sound-buttons-container {
+  background-color: black;
+  text-align: center;
+  padding: 40px;
+  margin: 20px;
 }

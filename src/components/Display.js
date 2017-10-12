@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Display = () => {
+const Display = (props) => {
   return (
-
+    <li className="display">
+      {props.display}
+    </li>
   );
 };
 

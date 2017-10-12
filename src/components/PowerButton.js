@@ -1,8 +1,9 @@
 import React from 'react';
 
 const PowerButton = (props) => {
+
   return (
-    <li className="power-button">
+    <li className="power-button" onClick={props.powerButtonClick}>
       {props.powerOn === true ? "Turn off" : "Turn on"}
     </li>
   );

@@ -9,6 +9,7 @@ class App extends Component {
       toggleSet: true,
       powerOn: false,
       display: "Display",
+      volume: 50,
       soundSet: {
         heaterKit: [
           {
@@ -124,21 +125,33 @@ class App extends Component {
         ]
       }
     };
+    //function binding to this
     this.togglePower = this.togglePower.bind(this);
     this.toggleSound = this.toggleSound.bind(this);
     this.changeDisplay = this.changeDisplay.bind(this);
+    this.changeVolume = this.changeVolume.bind(this);
   }
 
+  //turns power on or off
   togglePower() {
     this.setState({powerOn: !this.state.powerOn});
   }
 
+  //changes the sound set
   toggleSound() {
     this.setState({toggleSet: !this.state.toggleSet});
+    this.state.toggleSet ? this.setState({display: "heaterKit"}) : this.setState({display: "smoothPianoKit"});
   }
 
+  //changes display when sound button pressed
   changeDisplay(val) {
-    this.setState({display: val})
+    this.setState({display: val});
+  }
+
+  //changes volume when slider moved
+  changeVolume(n) {
+    this.setState({volume: n});
+    //TO DO: ADD VOLUME CONTROL
   }
 
   render() {
@@ -146,7 +159,7 @@ class App extends Component {
         <div className="app">
         <h1 className="App-title">Welcome to React</h1>
         <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay}/>
-        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound}/>
+        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} changeVolume={this.changeVolume} volume={this.state.volume}/>
       </div>
     );
   }

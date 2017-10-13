@@ -2,6 +2,7 @@ import React from 'react';
 import ToggleSound from '../components/ToggleSound';
 import PowerButton from '../components/PowerButton';
 import Display from '../components/Display';
+import Volume from '../components/Volume';
 
 const Controls = (props) => {
   return (
@@ -9,6 +10,7 @@ const Controls = (props) => {
       <ToggleSound toggled={props.toggled} toggleSetButtonClick={props.toggleSetButtonClick}/>
       <PowerButton powerOn={props.powerOn} powerButtonClick={props.powerButtonClick}/>
       <Display display={props.display}/>
+      <Volume volume={props.volume} changeVolume={props.changeVolume}/>
     </ul>
   );
 };

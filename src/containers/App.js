@@ -154,7 +154,10 @@ class App extends Component {
 
   //turns power on or off
   togglePower() {
-    this.setState({powerOn: !this.state.powerOn});
+    this.setState({
+      powerOn: !this.state.powerOn,
+      display: ""
+    });
   }
 
   //changes the sound set

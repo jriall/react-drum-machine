@@ -4,13 +4,11 @@ const SoundButton = (props) => {
   return (
     <li className="sound-button" value={props.soundName} onClick={() => {
       props.changeDisplay(props.soundName);
-      // let sound = new Audio(props.soundSrc);
-      // sound.load();
-      // sound.play();
+      props.playSound(props.soundKeyChar)
     }
   }>
-      {props.soundName}
-      <audio src={props.soundName} autoPlay />
+  {props.soundName}
+    <audio id={props.soundKeyChar} src={props.soundSrc}></audio>
     </li>
   );
 };

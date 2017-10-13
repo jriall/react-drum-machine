@@ -1,6 +1,25 @@
 import React, { Component } from "react";
 import SoundButtonsContainer from "./SoundButtonsContainer";
 import Controls from "./Controls";
+import Heater1 from "../assets/sounds/heater-kit/Heater1.mp3";
+import Heater2 from "../assets/sounds/heater-kit/Heater2.mp3";
+import Heater3 from "../assets/sounds/heater-kit/Heater3.mp3";
+import Heater4 from "../assets/sounds/heater-kit/Heater4.mp3";
+import Heater5 from "../assets/sounds/heater-kit/Heater5.mp3";
+import Heater6 from "../assets/sounds/heater-kit/Heater6.mp3";
+import Heater7 from "../assets/sounds/heater-kit/Heater7.mp3";
+import Heater8 from "../assets/sounds/heater-kit/Heater8.mp3";
+import Heater9 from "../assets/sounds/heater-kit/Heater9.mp3";
+import Smooth1 from "../assets/sounds/smooth-piano-kit/Smooth1.mp3";
+import Smooth2 from "../assets/sounds/smooth-piano-kit/Smooth2.mp3";
+import Smooth3 from "../assets/sounds/smooth-piano-kit/Smooth3.mp3";
+import Smooth4 from "../assets/sounds/smooth-piano-kit/Smooth4.mp3";
+import Smooth5 from "../assets/sounds/smooth-piano-kit/Smooth5.mp3";
+import Smooth6 from "../assets/sounds/smooth-piano-kit/Smooth6.mp3";
+import Smooth7 from "../assets/sounds/smooth-piano-kit/Smooth7.mp3";
+import Smooth8 from "../assets/sounds/smooth-piano-kit/Smooth8.mp3";
+import Smooth9 from "../assets/sounds/smooth-piano-kit/Smooth9.mp3";
+
 
 class App extends Component {
   constructor(props) {
@@ -16,55 +35,55 @@ class App extends Component {
             name: "Heater-1",
             keyCode: 81,
             keyChar: "Q",
-            src: "../assets/sounds/heater-kit/1-Heater-1.mp3"
+            src: Heater1
           },
           {
             name: "Heater-2",
             keyCode: 87,
             keyChar: "W",
-            src: "../assets/sounds/heater-kit/2-Heater-2.mp3"
+            src: Heater2
           },
           {
             name: "Heater-3",
             keyCode: 69,
             keyChar: "E",
-            src: "../assets/sounds/heater-kit/3-Heater-3.mp3"
+            src: Heater3
           },
           {
             name: "Heater-4",
             keyCode: 65,
             keyChar: "A",
-            src: "../assets/sounds/heater-kit/4-Heater-4_1.mp3"
+            src: Heater4
           },
           {
             name: "Clap",
             keyCode: 83,
             keyChar: "S",
-            src: "../assets/sounds/heater-kit/5-Heater-6.mp3"
+            src: Heater5
           },
           {
             name: "Open-HH",
             keyCode: 68,
             keyChar: "D",
-            src: "../assets/sounds/heater-kit/6-Dsc_Oh.mp3"
+            src: Heater6
           },
           {
             name: "Kick-n'-Hat",
             keyCode: 90,
             keyChar: "Z",
-            src: "../assets/sounds/heater-kit/7-Kick_n_Hat.mp3"
+            src: Heater7
           },
           {
             name: "Kick",
             keyCode: 88,
             keyChar: "X",
-            src: "../assets/sounds/heater-kit/8-RP4_KICK_1.mp3"
+            src: Heater8
           },
           {
             name: "Closed-HH",
             keyCode: 67,
             keyChar: "C",
-            src: "../assets/sounds/heater-kit/9-Cev_H2.mp3"
+            src: Heater9
           }
         ],
         smoothPianoKit: [
@@ -72,55 +91,55 @@ class App extends Component {
             name: "Chord_1",
             keyCode: 81,
             keyChar: "Q",
-            src: "../assets/sounds/smooth-piano-kit/1-Chord_1.mp3"
+            src: Smooth1
           },
           {
             name: "Chord_2",
             keyCode: 87,
             keyChar: "W",
-            src: "../assets/sounds/smooth-piano-kit/2-Chord_2.mp3"
+            src: Smooth2
           },
           {
             name: "Chord_3",
             keyCode: 69,
             keyChar: "E",
-            src: "../assets/sounds/smooth-piano-kit/3-Chord_3.mp3"
+            src: Smooth3
           },
           {
             name: "Shaker",
             keyCode: 65,
             keyChar: "A",
-            src: "../assets/sounds/smooth-piano-kit/4-Give_us_a_light.mp3"
+            src: Smooth4
           },
           {
             name: "Open-HH",
             keyCode: 83,
             keyChar: "S",
-            src: "../assets/sounds/smooth-piano-kit/5-Dry_Ohh.mp3"
+            src: Smooth5
           },
           {
             name: "Closed-HH",
             keyCode: 68,
             keyChar: "D",
-            src: "../assets/sounds/smooth-piano-kit/6-Bld_H1.mp3"
+            src: Smooth6
           },
           {
             name: "Punchy-Kick",
             keyCode: 90,
             keyChar: "Z",
-            src: "../assets/sounds/smooth-piano-kit/7-punchy_kick_1.mp3"
+            src: Smooth7
           },
           {
             name: "Side-Stick",
             keyCode: 88,
             keyChar: "X",
-            src: "../assets/sounds/smooth-piano-kit/8-side_stick_1.mp3"
+            src: Smooth8
           },
           {
             name: "Snare",
             keyCode: 67,
             keyChar: "C",
-            src: "../assets/sounds/smooth-piano-kit/9-Brk_Snr.mp3"
+            src: Smooth9
           }
         ]
       }
@@ -130,6 +149,7 @@ class App extends Component {
     this.toggleSound = this.toggleSound.bind(this);
     this.changeDisplay = this.changeDisplay.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
+    this.playSound = this.playSound.bind(this);
   }
 
   //turns power on or off
@@ -154,11 +174,17 @@ class App extends Component {
     //TO DO: ADD VOLUME CONTROL
   }
 
+  playSound(id) {
+    let sound = document.querySelector(`#${id}`);
+    sound.currentTime = 0;
+    sound.play()
+  }
+
   render() {
     return (
         <div className="app">
         <h1 className="App-title">Welcome to React</h1>
-        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay}/>
+        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay} playSound={this.playSound}/>
         <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} changeVolume={this.changeVolume} volume={this.state.volume}/>
       </div>
     );

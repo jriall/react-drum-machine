@@ -6,7 +6,7 @@ const SoundButtonsContainer = (props) => {
   let soundSet = !props.toggled ? props.sounds.heaterKit : props.sounds.smoothPianoKit;
   //display the button set
   const soundButtons = soundSet.map(a => {
-    return <SoundButton soundName={a.name} key={a.keyCode} soundSrc={a.src} soundKeyChar={a.keyChar} soundKeyCode={a.keyCode} changeDisplay={props.changeDisplay} playSound={props.playSound}/>;
+    return <SoundButton soundName={a.name} key={a.keyCode} soundSrc={a.src} soundKeyChar={a.keyChar} soundKeyCode={a.keyCode} changeDisplay={props.changeDisplay} powerOn={props.powerOn} playSound={props.playSound}/>;
   });
   return <ul className="sound-buttons-container">{soundButtons}</ul>;
 };

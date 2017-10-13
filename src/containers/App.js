@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       toggleSet: true,
-      powerOn: false,
+      powerOn: true,
       display: "Display",
       volume: 50,
       soundSet: {

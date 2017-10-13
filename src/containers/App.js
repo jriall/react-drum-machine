@@ -126,6 +126,7 @@ class App extends Component {
     };
     this.togglePower = this.togglePower.bind(this);
     this.toggleSound = this.toggleSound.bind(this);
+    this.changeDisplay = this.changeDisplay.bind(this);
   }
 
   togglePower() {
@@ -136,11 +137,15 @@ class App extends Component {
     this.setState({toggleSet: !this.state.toggleSet});
   }
 
+  changeDisplay(val) {
+    this.setState({display: val})
+  }
+
   render() {
     return (
         <div className="app">
         <h1 className="App-title">Welcome to React</h1>
-        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn}/>
+        <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay}/>
         <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound}/>
       </div>
     );

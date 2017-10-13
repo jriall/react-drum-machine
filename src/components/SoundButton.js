@@ -1,12 +1,9 @@
 import React from 'react';
 
-const SoundButton = ({soundName, soundSrc, soundKeyChar, soundKeyCode}) => {
+const SoundButton = (props) => {
   return (
-    <li className="sound-button" onClick={() =>{
-      //need to access the specific sound now.
-      soundSrc.play();
-    }}>
-      {soundName}
+    <li className="sound-button" value={props.soundName} onClick={() => props.changeDisplay(props.soundName)}>
+      {props.soundName}
     </li>
   );
 };

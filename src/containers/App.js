@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SoundButtonsContainer from "./SoundButtonsContainer";
 import Controls from "./Controls";
 import SoundFile from "./sound-file";
+import ReactSimpleRange from 'react-simple-range';
 
 class App extends Component {
   constructor(props) {
@@ -130,8 +131,8 @@ class App extends Component {
     this.togglePower = this.togglePower.bind(this);
     this.toggleSound = this.toggleSound.bind(this);
     this.changeDisplay = this.changeDisplay.bind(this);
-    this.changeVolume = this.changeVolume.bind(this);
     this.playSound = this.playSound.bind(this);
+    this.changeVolume = this.changeVolume.bind(this);
   }
 
   //turns power on or off
@@ -155,9 +156,13 @@ class App extends Component {
   }
 
   //changes volume when slider moved
-  changeVolume(n) {
-    this.setState({volume: n});
-    //TO DO: ADD VOLUME CONTROL
+  changeVolume(val) {
+    this.setState({
+      volume: val,
+      display: `Volume: ${val}`
+    })
+    const soundButton = document.querySelectorAll(".audio-tag");
+    [...soundButton].map(audio => audio.volume = this.state.volume / 100);
   }
 
   playSound(id) {
@@ -171,7 +176,11 @@ class App extends Component {
         <div className="app">
         <h1 className="App-title">Welcome to React</h1>
         <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay} playSound={this.playSound}/>
-        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} changeVolume={this.changeVolume} volume={this.state.volume}/>
+        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} startSlide={this.startSlide} moveSlide={this.moveSlide} stopSlide={this.stopSlide} volume={this.state.volume}/>
+        <ReactSimpleRange label step={1} defaultValue={50} onChange={(e) => {
+          this.changeVolume(e.value)
+        }
+        } value={this.state.volume}/>
       </div>
     );
   }

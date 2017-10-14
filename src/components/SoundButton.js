@@ -11,7 +11,7 @@ const SoundButton = props => {
       }}
     >
       {props.soundName}
-      <audio id={props.soundKeyChar} src={props.soundSrc} />
+      <audio className="audio-tag" id={props.soundKeyChar} src={props.soundSrc} />
     </li>
   );
 };

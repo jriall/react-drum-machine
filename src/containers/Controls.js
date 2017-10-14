@@ -10,7 +10,7 @@ const Controls = (props) => {
       <ToggleSound toggled={props.toggled} toggleSetButtonClick={props.toggleSetButtonClick} powerOn={props.powerOn}/>
       <PowerButton powerOn={props.powerOn} powerButtonClick={props.powerButtonClick}/>
       <Display display={props.display}/>
-      <Volume volume={props.volume} changeVolume={props.changeVolume}/>
+      <Volume volume={props.volume} startSlide={props.startSlide} moveSlide={props.moveSlide} stopSlide={props.stopSlide}/>
     </ul>
   );
 };

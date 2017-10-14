@@ -2,7 +2,6 @@ import React from 'react';
 import ToggleSound from '../components/ToggleSound';
 import PowerButton from '../components/PowerButton';
 import Display from '../components/Display';
-import Volume from '../components/Volume';
 
 const Controls = (props) => {
   return (
@@ -10,7 +9,9 @@ const Controls = (props) => {
       <ToggleSound toggled={props.toggled} toggleSetButtonClick={props.toggleSetButtonClick} powerOn={props.powerOn}/>
       <PowerButton powerOn={props.powerOn} powerButtonClick={props.powerButtonClick}/>
       <Display display={props.display}/>
-      <Volume volume={props.volume} startSlide={props.startSlide} moveSlide={props.moveSlide} stopSlide={props.stopSlide}/>
+      <input type="range" id="vol" max="100" min="0" step="1" onChange={(e) => {
+        props.changeVolume(e.target.value)
+      }}/>
     </ul>
   );
 };

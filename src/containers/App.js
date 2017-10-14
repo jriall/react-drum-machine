@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SoundButtonsContainer from "./SoundButtonsContainer";
 import Controls from "./Controls";
 import SoundFile from "./sound-file";
-import ReactSimpleRange from 'react-simple-range';
 
 class App extends Component {
   constructor(props) {
@@ -157,12 +156,14 @@ class App extends Component {
 
   //changes volume when slider moved
   changeVolume(val) {
+    console.log(val);
     this.setState({
       volume: val,
       display: `Volume: ${val}`
     })
     const soundButton = document.querySelectorAll(".audio-tag");
     [...soundButton].map(audio => audio.volume = this.state.volume / 100);
+    console.log(this.state.volume);
   }
 
   playSound(id) {
@@ -176,11 +177,7 @@ class App extends Component {
         <div className="app">
         <h1 className="App-title">Welcome to React</h1>
         <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay} playSound={this.playSound}/>
-        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} startSlide={this.startSlide} moveSlide={this.moveSlide} stopSlide={this.stopSlide} volume={this.state.volume}/>
-        <ReactSimpleRange label step={1} defaultValue={50} onChange={(e) => {
-          this.changeVolume(e.value)
-        }
-        } value={this.state.volume}/>
+        <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} startSlide={this.startSlide} moveSlide={this.moveSlide} stopSlide={this.stopSlide} volume={this.state.volume} changeVolume={this.changeVolume}/>
       </div>
     );
   }

@@ -69,3 +69,7 @@ body {
   padding: 40px;
   margin: 20px;
 }
+
+.volume-slider {
+  width: 300px;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SoundButtonsContainer from "./SoundButtonsContainer";
 import Controls from "./Controls";
-import SoundFile from "./sound-file";
+import SoundFile from "./SoundFile";
 
 class App extends Component {
   constructor(props) {
@@ -157,10 +157,17 @@ class App extends Component {
   //changes volume when slider moved
   changeVolume(val) {
     console.log(val);
-    this.setState({
-      volume: val,
-      display: `Volume: ${val}`
-    })
+    if (val < 2) {
+      this.setState({
+        volume: 0,
+        display: "Volume: 0"
+      });
+    } else {
+      this.setState({
+        volume: val,
+        display: `Volume: ${val}`
+      });
+    }
     const soundButton = document.querySelectorAll(".audio-tag");
     [...soundButton].map(audio => audio.volume = this.state.volume / 100);
     console.log(this.state.volume);

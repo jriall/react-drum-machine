@@ -9,7 +9,7 @@ const Controls = (props) => {
       <ToggleSound toggled={props.toggled} toggleSetButtonClick={props.toggleSetButtonClick} powerOn={props.powerOn}/>
       <PowerButton powerOn={props.powerOn} powerButtonClick={props.powerButtonClick}/>
       <Display display={props.display}/>
-      <input type="range" id="vol" max="100" min="0" step="1" onChange={(e) => {
+      <input type="range" className="volume-slider" max="100" min="0" step="1" onChange={(e) => {
         props.changeVolume(e.target.value)
       }}/>
     </ul>

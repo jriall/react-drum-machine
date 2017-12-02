@@ -9,60 +9,60 @@ class App extends Component {
     this.state = {
       toggleSet: true,
       powerOn: true,
-      display: "Display",
+      display: "VOLUME: 50",
       volume: 50,
       soundSet: {
         heaterKit: [
           {
-            name: "Heater-1",
+            name: "HEATER-1",
             keyCode: 81,
             keyChar: "Q",
             src: SoundFile.Heater1
           },
           {
-            name: "Heater-2",
+            name: "HEATER-2",
             keyCode: 87,
             keyChar: "W",
             src: SoundFile.Heater2
           },
           {
-            name: "Heater-3",
+            name: "HEATER-3",
             keyCode: 69,
             keyChar: "E",
             src: SoundFile.Heater3
           },
           {
-            name: "Heater-4",
+            name: "HEATER-4",
             keyCode: 65,
             keyChar: "A",
             src: SoundFile.Heater4
           },
           {
-            name: "Clap",
+            name: "CLAP",
             keyCode: 83,
             keyChar: "S",
             src: SoundFile.Heater5
           },
           {
-            name: "Open-HH",
+            name: "OPEN-HH",
             keyCode: 68,
             keyChar: "D",
             src: SoundFile.Heater6
           },
           {
-            name: "Kick-n'-Hat",
+            name: "KICK-N'-HAT",
             keyCode: 90,
             keyChar: "Z",
             src: SoundFile.Heater7
           },
           {
-            name: "Kick",
+            name: "KICK",
             keyCode: 88,
             keyChar: "X",
             src: SoundFile.Heater8
           },
           {
-            name: "Closed-HH",
+            name: "CLOSED-HH",
             keyCode: 67,
             keyChar: "C",
             src: SoundFile.Heater9
@@ -70,55 +70,55 @@ class App extends Component {
         ],
         smoothPianoKit: [
           {
-            name: "Chord_1",
+            name: "CHORD_1",
             keyCode: 81,
             keyChar: "Q",
             src: SoundFile.Smooth1
           },
           {
-            name: "Chord_2",
+            name: "CHORD_2",
             keyCode: 87,
             keyChar: "W",
             src: SoundFile.Smooth2
           },
           {
-            name: "Chord_3",
+            name: "CHORD_3",
             keyCode: 69,
             keyChar: "E",
             src: SoundFile.Smooth3
           },
           {
-            name: "Shaker",
+            name: "SHAKER",
             keyCode: 65,
             keyChar: "A",
             src: SoundFile.Smooth4
           },
           {
-            name: "Open-HH",
+            name: "OPEN-HH",
             keyCode: 83,
             keyChar: "S",
             src: SoundFile.Smooth5
           },
           {
-            name: "Closed-HH",
+            name: "CLOSED-HH",
             keyCode: 68,
             keyChar: "D",
             src: SoundFile.Smooth6
           },
           {
-            name: "Punchy-Kick",
+            name: "PUNCHY-KICK",
             keyCode: 90,
             keyChar: "Z",
             src: SoundFile.Smooth7
           },
           {
-            name: "Side-Stick",
+            name: "SIDE-STICK",
             keyCode: 88,
             keyChar: "X",
             src: SoundFile.Smooth8
           },
           {
-            name: "Snare",
+            name: "SNARE",
             keyCode: 67,
             keyChar: "C",
             src: SoundFile.Smooth9
@@ -136,17 +136,16 @@ class App extends Component {
 
   //turns power on or off
   togglePower() {
-    console.log(this.state.soundSet)
     this.setState({
       powerOn: !this.state.powerOn,
-      display: ""
+      display: `VOLUME: ${this.state.volume}`
     });
   }
 
   //changes the sound set
   toggleSound() {
     this.setState({toggleSet: !this.state.toggleSet});
-    this.state.toggleSet ? this.setState({display: "heaterKit"}) : this.setState({display: "smoothPianoKit"});
+    this.state.toggleSet ? this.setState({display: "HEATER"}) : this.setState({display: "PIANO"});
   }
 
   //changes display when sound button pressed
@@ -156,16 +155,15 @@ class App extends Component {
 
   //changes volume when slider moved
   changeVolume(val) {
-    console.log(val);
     if (val < 2) {
       this.setState({
         volume: 0,
-        display: "Volume: 0"
+        display: "VOLUME: 0"
       });
     } else {
       this.setState({
         volume: val,
-        display: `Volume: ${val}`
+        display: `VOLUME: ${val}`
       });
     }
     const soundButton = document.querySelectorAll(".audio-tag");
@@ -182,7 +180,7 @@ class App extends Component {
   render() {
     return (
         <div className="app">
-        <h1 className="App-title">Welcome to React</h1>
+        <h1 className="App-title">REACT DRUM MACHINE</h1>
         <SoundButtonsContainer sounds={this.state.soundSet} toggled={this.state.toggleSet} powerOn={this.state.powerOn} changeDisplay={this.changeDisplay} playSound={this.playSound}/>
         <Controls toggled={this.state.toggleSet} powerOn={this.state.powerOn} display={this.state.display} powerButtonClick={this.togglePower} toggleSetButtonClick={this.toggleSound} changeDisplay={this.changeDisplay} startSlide={this.startSlide} moveSlide={this.moveSlide} stopSlide={this.stopSlide} volume={this.state.volume} changeVolume={this.changeVolume}/>
       </div>

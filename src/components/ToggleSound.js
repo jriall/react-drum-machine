@@ -2,13 +2,13 @@ import React from 'react';
 
 const ToggleSound = (props) => {
   return (
-    <li className="toggle-sound" onClick={() => {
+    <li className="toggle-sound control-button" onClick={() => {
       if (props.powerOn) {
         props.toggleSetButtonClick();
       }
     }
   }>
-      {props.toggled === true ? "Change to Heater Kit" : "Change to Smooth Piano Kit"}
+      {props.toggled === true ? "CHANGE TO HEATER" : "CHANGE TO PIANO"}
     </li>
   );
 };
